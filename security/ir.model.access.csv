@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_tunas_aritmatika,access.tunas.aritmatika,model_tunas_aritmatika,,1,1,1,1
+access_tunas_room,access.tunas.room,model_tunas_room,,1,1,1,1
+access_tunas_bookingroom,access.tunas.bookingroom,model_tunas_bookingroom,,1,1,1,1

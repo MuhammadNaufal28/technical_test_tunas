@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="seq_kode_booking" model="ir.sequence">
+        <field name="name">No Booking</field>
+        <field name="code">no.booking.room</field>
+        <field name="prefix">%(day)s%(month)s%(year)s</field>
+        <field name="padding">4</field>
+        <field name="suffix">TNS</field>
+        <field name="company_id" eval="False"/>
+    </record>
+</odoo>

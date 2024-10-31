@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+    
+        <!-- tunas.bookingroom tree view -->
+        <record id="tunas_bookingroom_view_tree" model="ir.ui.view">
+            <field name="name">tunas.bookingroom.view.tree</field>
+            <field name="model">tunas.bookingroom</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <!-- Add your fields here -->
+                    <field name="no"/>
+                    <field name="tunas_room_id"/>
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="state"                    
+                    decoration-info="state == 'draft'"
+                    decoration-success="state == 'done'"
+                    decoration-primary="state == 'on_going'"                  
+                    widget="badge"
+                />
+                </tree>
+            </field>
+        </record>
+
+        <!-- tunas.bookingroom form view -->
+        <record id="tunas_bookingroom_view_form" model="ir.ui.view">
+            <field name="name">tunas.bookingroom.view.form</field>
+            <field name="model">tunas.bookingroom</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <header>
+                        <!-- Button untuk status borrowed, hanya terlihat jika status draft -->
+                        <button name="action_on_going" type="object" string="On Going"
+                                class="btn btn-warning oe_highlight"
+                                attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+                        
+                        <!-- Button untuk status overdue, hanya terlihat jika status borrowed -->
+                        <button name="action_done" type="object" string="Done"
+                                confirm="Are you this booking has been Done?"
+                                class="btn btn-success oe_highlight"
+                                attrs="{'invisible': [('state', 'in', ['draft', 'done'])]}"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,on_going,done"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="no" readonly="1"/>
+                            </h1>
+                        </div> 
+                        <group>
+                            <field name="tunas_room_id"/>
+                            <field name="name"/>
+                            <field name="date"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- tunas.bookingroom action window -->
+        <record id="tunas_bookingroom_action" model="ir.actions.act_window">
+            <field name="name">Booking Room</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tunas.bookingroom</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="tunas_booking_room_menu_act" name="Booking Room" parent="room_management_menu_categ" action="tunas_bookingroom_action" sequence="2"/>
+    
+    </data>
+    
+
+</odoo>

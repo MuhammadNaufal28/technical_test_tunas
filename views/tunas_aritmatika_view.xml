@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <!-- tunas.aritmatika form view -->
+        <record id="tunas_aritmatika_view_form" model="ir.ui.view">
+            <field name="name">tunas.aritmatika.view.form</field>
+            <field name="model">tunas.aritmatika</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <!-- Add your fields here -->
+                            <field name="name"/>
+                            <field name="angka_input"/>
+                            <field name="angka_output"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <!-- tunas.aritmatika action window -->
+        <record id="tunas_aritmatika_action" model="ir.actions.act_window">
+            <field name="name">tunas.aritmatika.action</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tunas.aritmatika</field>
+            <field name="view_mode">form</field>
+        </record>
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="tunas_aritmatika_menu_act" name="Aritmatika Test" parent="aritmatika_test_menu_categ" action="tunas_aritmatika_action" sequence="1"/>
+
+        
+    
+    </data>
+    
+
+</odoo>
